@@ -1,10 +1,44 @@
 {% extends "base.html" %}
-
+{% load static  %}
 
 {% block title %}
     My Blog
 {% endblock  %}
 
-{% block content %}
-    <h1>Hello There! Welcome to my art critiques and analysis! </h1>
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "blog/post.css" %}" >
+    <link rel="stylesheet" href="{% static "blog/index.css" %}" >
 {% endblock  %}
+
+{% block content %}
+    <section id="welcome">
+        <header>
+            <img src="{% static "blog/images/profile.JPG" %}" alt="Edd - The Author of This Blog">
+            <h2> EDWIN'S BLOG</h2>
+        </header>
+        <h1>Hello There! Welcome to my art critiques and analysis! </h1>
+        <p> Hi, I am Edwin King'ori and I love to critique antique artworks and paintings from different art periods!</p>
+    </section>
+
+    <section id="latest-posts">
+        <h2> My latest art analysis</h2>
+
+        <ul>
+            {% include "blog/includes/post.html" %}
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2> Hobbies </h2>
+        <p> I love programming, my stack is python/django.
+            Additionally, I enthisiasticallydedicate my spare time to analyzing historic artworks,
+            and provide assistance to scholars in their explorations of this field. </p>
+        <p>
+            My goal is continue growing as a developer as well as an art analyst - and if I could
+            help you do the same, I'd be very happy!
+        </p>
+    </section>
+
+    
+{% endblock  %}
+
