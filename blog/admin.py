@@ -3,6 +3,14 @@ from django.contrib import admin
 from .models import Post, Author, Tag
 # Register your models here.
 
-admin.site.register(Post)
+
+class PostAdmin(admin.ModelAdmin):
+    list_filter = ('author', 'date', 'tag',)
+    list_display = ('title', 'date', 'author',)
+# enabling automatic addition of slugs
+    prepopulated_fields = {"slug": ('title',)}
+
+
+admin.site.register(Post, PostAdmin)
 admin.site.register(Author)
 admin.site.register(Tag)

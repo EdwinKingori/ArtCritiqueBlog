@@ -8,9 +8,19 @@ class Author(models.Model):
     last_name = models.CharField(max_length=50)
     email_address = models.EmailField()
 
+# creating a helper method for he string method below
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    def __str__(self):
+        return self.full_name()
+
 
 class Tag(models.Model):
     caption = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.caption
 
 
 class Post(models.Model):
