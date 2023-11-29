@@ -47,6 +47,15 @@ body {
   font-weight: bold;
 }
 
+#summary a {
+  color: white;
+  text-decoration: none;
+}
+
+#summary a :hover{
+  background-color: blueviolet;
+}
+
 #summary time {
   font-weight: bold;
 } 

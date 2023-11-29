@@ -5,7 +5,7 @@ from .models import Post, Author, Tag
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_filter = ('author', 'date', 'tag',)
+    list_filter = ('author', 'date', 'tags',)
     list_display = ('title', 'date', 'author',)
 # enabling automatic addition of slugs
     prepopulated_fields = {"slug": ('title',)}

@@ -35,4 +35,4 @@ class Post(models.Model):
     author = models.ForeignKey(
         Author, on_delete=models.SET_NULL, null=True, related_name="posts")
 # adding a many-to-many relationship with the post model
-    tag = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag)
