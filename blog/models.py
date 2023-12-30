@@ -33,8 +33,16 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, db_index=True)
     content = models.TextField(
         validators=[MinLengthValidator(10)])
-# adding a one-to-many relation using a foreign_key field
+# adding a one-to-many relation using a foreign_key field. Where an author could have more than one post.
     author = models.ForeignKey(
         Author, on_delete=models.SET_NULL, null=True, related_name="posts")
 # adding a many-to-many relationship with the post model
     tags = models.ManyToManyField(Tag)
+
+
+class Comment(models.Model):
+    user_name = models.CharField(max_length=120)
+    user_email = models.EmailField()
+    text = models.TextField(max_length=400)
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name="comments")
