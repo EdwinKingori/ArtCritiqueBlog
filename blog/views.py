@@ -89,14 +89,16 @@ class SinglePostView(View):
 class ReadLaterView(View):
     # adding the get method for the stored-posts template's url
     def get(self, request):
-        # we need to et the stored posts
+        # we need to get the stored posts
         stored_posts = request.session.get("stored_posts")
-# checking if stored posts is none
+# checking if stored posts is none/empty or the length of the stored_posts is zero
+        # adding a context for the to be rendered template
         context = {}
         if stored_posts is None or len(stored_posts) == 0:
             context["posts"] = []
             context["has_posts"] = False
         else:
+            # fetching the posts where the ids of the posts are part of the stored_posts
             posts = Post.objects.filter(id__in=stored_posts)
             context["posts"] = posts
             context["has_posts"] = True
