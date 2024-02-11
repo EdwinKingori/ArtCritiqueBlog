@@ -50,6 +50,7 @@ class AllPostsView(ListView):
 #         "post_tags": identified_post.tags.all()
 #     })
 class SinglePostView(View):
+    # A function of configuring the read Later button ( checking if post is saved for later)
     def is_stored_post(self, request, post_id):
         stored_posts = request.session.get("stored_posts")
         if stored_posts is not None:
@@ -60,7 +61,6 @@ class SinglePostView(View):
 
     def get(self, request, slug):
         post = Post.objects.get(slug=slug)
-
         context = {
             "post": post,
             "post_tags": post.tags.all(),
@@ -127,6 +127,7 @@ class ReadLaterView(View):
         if post_id not in stored_posts:
             stored_posts.append(post_id)
         else:
+            # removing the post_id or enerally the post if it is part of the stored/saved  posts
             stored_posts.remove(post_id)
 
         request.session["stored_posts"] = stored_posts
