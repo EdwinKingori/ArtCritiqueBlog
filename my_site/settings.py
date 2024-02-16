@@ -28,7 +28,7 @@ DEBUG = getenv("IS_DEVELOPMENT", True)
 
 
 ALLOWED_HOSTS = [
-    getenv("APP_HOST")
+    getenv("APP_HOST", "127.0.0.1")
 ]
 
 
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'my_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '',
+        'NAME': 'postgres',
         'USER': 'djangoblog',
         'PASSWORD': 'django2024',
         'HOST': 'django-blog-db.crqku8maqc12.eu-north-1.rds.amazonaws.com',
